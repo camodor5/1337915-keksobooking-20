@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Максим](https://up.htmlacademy.ru/javascript/20/user/1337915).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Кудрявцев](https://htmlacademy.ru/profile/id166603).
 
 ---
 
