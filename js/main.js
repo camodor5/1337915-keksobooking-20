@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 'use strict';
 
 var OBJECTS_AMOUNT = 8;
@@ -87,6 +85,7 @@ var activateMap = function () {
     map.classList.remove('map--faded');
   }
 };
+activateMap();
 
 var pinHeight = 70;
 var pinWidth = 50;
@@ -197,4 +196,3 @@ var drawCard = function (object) {
 drawCard(mock[0]);
 
 
->>>>>>> Stashed changes
