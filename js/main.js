@@ -77,7 +77,6 @@ var getMock = function () {
   });
 };
 
-
 var activateMap = function () {
   var map = document.querySelector('.map');
   if (map) {
@@ -183,8 +182,36 @@ var drawCard = function (object) {
 };
 
 
-var pinMain = document.querySelector('.map__pin--main');
-pinMain.addEventListener('mousedown', function (evt) {
+var form = document.querySelector('.ad-form');
+var fieldset = form.querySelectorAll('fieldset');
+var disableForm = function () {
+  fieldset.forEach(function (item) {
+    item.setAttribute('disabled', 'disabled');
+  });
+};
+disableForm();
+var mapFiltersForm = document.querySelector('.map__filters');
+var disableMapFiltersForm = function () {
+  mapFiltersForm.setAttribute('disabled', 'disabled');
+};
+disableMapFiltersForm();
+
+var activateFieldset = function () {
+  fieldset.forEach(function (item) {
+    item.removeAttribute('disabled');
+  });
+};
+
+var activateForm = function () {
+  if (form) {
+    form.classList.remove('ad-form--disabled');
+  }
+  if (fieldset) {
+    activateFieldset();
+  }
+};
+
+var activatePageOnMouse = function (evt) {
   if (evt.which === 1) {
     activateMap();
 
@@ -195,13 +222,43 @@ pinMain.addEventListener('mousedown', function (evt) {
     drawCard(mock[0]);
   }
   activateForm();
-});
-var activateForm = function () {
-  var form = document.querySelector('.ad-form');
-  if (form) {
-    form.classList.remove('ad-form--disabled');
-  }
-  var fieldset = form.querySelectorAll('fieldset');
 };
 
 
+
+var activatePageOnMouse = function (evt) {
+  if (evt.which === 1) {
+    activateMap();
+
+    if (pinsContainer) {
+      drawPins(mock);
+    }
+    console.log(mock);
+    drawCard(mock[0]);
+  }
+  activateForm();
+};
+var activatePageOnEnter = function (evt) {
+  if (evt.keyCode === 13) {
+    activateMap();
+
+    if (pinsContainer) {
+      drawPins(mock);
+    }
+    console.log(mock);
+    drawCard(mock[0]);
+  }
+  activateForm();
+};
+
+var pinMain = document.querySelector('.map__pin--main');
+pinMain.addEventListener('mousedown', activatePageOnMouse);
+pinMain.addEventListener('keydown', activatePageOnEnter);
+
+
+var pinMainHeight = 65;
+var pinMainWidth = 65;
+
+
+var inputAdress = document.querySelector('#adress');
+inputAdress.value = '';
